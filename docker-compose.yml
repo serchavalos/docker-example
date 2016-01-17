@@ -11,6 +11,7 @@ app:
   build: ./meetup-service
   links:
     - db
+    - jenkins
   ports:
     - "9000:9000"
   volumes:
@@ -30,3 +31,11 @@ db:
   environment:
     - MYSQL_ROOT_PASSWORD=docker
     - MYSQL_DATABASE=app
+
+jenkins:
+  image: jenkins
+  volumes:
+    - ./jenkins:/var/jenkins_home
+  ports:
+    - "8080:8080"
+    - "5000:5000"
